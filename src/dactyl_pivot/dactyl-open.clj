@@ -14,7 +14,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;
 
 (def nrows 5)
-(def ncols 7)
+(def ncols 6)
 
 (def α (/ π 10))                        ; curvature of the columns
 (def β (/ π 32))                        ; curvature of the rows
@@ -22,12 +22,12 @@
 (def centercol 4)                       ; controls left-right tilt / tenting (higher number is more tenting)
 (def tenting-angle (/ π 12))            ; or, change this for more precise tenting control
 
-(def pinky-15u true)                    ; controls whether the outer column uses 1.5u keys
+(def pinky-15u false)                    ; controls whether the outer column uses 1.5u keys
 (def first-15u-row 0)                   ; controls which should be the first row to have 1.5u keys on the outer column
 (def last-15u-row 3)                    ; controls which should be the last row to have 1.5u keys on the outer column
 
 (def extra-row false)                   ; adds an extra bottom row to the outer columns
-(def inner-column true)                 ; adds an extra inner column (two less rows than nrows)
+(def inner-column false)                 ; adds an extra inner column (two less rows than nrows)
 
 (def column-style :standard)
 
@@ -64,7 +64,7 @@
 (def fixed-z [12.1    8.3 0  5   10.7 14.5 17.5])
 (def fixed-tenting (deg2rad 0))
 
-(def create-side-nubs? true)
+(def create-side-nubs? false)
 
 ;;;;;;;;;;;;;;;;;;;;;;;
 ;; General variables ;;
@@ -964,11 +964,14 @@
 )
 
 (def thumb-plate
-    (union thumb thumb-plate-holes)
+    (union 
+        thumb 
+        thumb-plate-holes)
 )
 
 (def dactyl-top-right
    (union
+        caps
         finger-plate
         thumb-plate
         finger-plate-rack
